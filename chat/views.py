@@ -83,9 +83,10 @@ def chatbot(request):
     
     task = Chats.objects.filter(Username=request.user).values()
     length=len(Chats.objects.filter(Username=request.user).values())
-    print(task)
+    # print(task)
     print("All chats ")
-    # print(request.user)
+    print(request)
+    
     return render(request,"chatbot.html",{"mymembers":task,"msg_count":length})
 
 def profile(request):
