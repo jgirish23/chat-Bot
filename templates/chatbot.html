@@ -44,7 +44,7 @@
           <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Welcome {{user.username}} </a>
+              <a class="nav-link text-black bold" href="#">Welcome {{user.username}} </a>
             </li>
           </ul>
           <!-- Left links -->
@@ -178,8 +178,17 @@
       const text = document.getElementById("user-text");
 
       console.log(text.value);
+      text.addEventListener("keypress", async (e)=>{
+        if (e.key === 'Enter') {
+          console.log("Enter key clicked");
+          Handel_post_request(e);
+        }
+      })
       button_post.addEventListener("click", async (e) => {
         console.log("button clicked");
+        Handel_post_request(e);
+      });
+      async function Handel_post_request(e){
         try {
           const response = await fetch("/chatbot", {
             method: "POST",
@@ -198,7 +207,7 @@
         } catch (err) {
           console.error(`Error: ${err}`);
         }
-      });
+      }
     </script>
   </body>
 </html>

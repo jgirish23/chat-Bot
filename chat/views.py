@@ -39,14 +39,16 @@ def register(request):
             username=request.POST["username"]
             password_1=request.POST["password1"]
             password_2=request.POST["password2"]
-            if( password_1==password_2 ) and not (User.objects.filter(username=username).exists() | User.objects.filter(email=email).exists()):
-                User.objects.create_user(username,email, password_1)
-                user = authenticate(username=username,email=email, password = password_1)
-                login(request, user)
-                return redirect("/chatbot")
-                # return render(request,"chatbot.html",{"Email":email, "Password":password_1,"username":username})
+            if( password_1==password_2 ):
+                if not (User.objects.filter(username=username).exists() | User.objects.filter(email=email).exists()):
+                    User.objects.create_user(username,email, password_1)
+                    user = authenticate(username=username,email=email, password = password_1)
+                    login(request, user)
+                    return redirect("/chatbot")
+                else:
+                    return render(request,"register.html",{"Error":"Enter different username and password!"})
             else:
-                return render(request,"register.html",{"Error":"Invalid input try again!"})
+                return render(request,"register.html",{"Error":"Enter same password!"})
             
         except:
             return render(request,"register.html",{"Error":"Invalid input try again!"})
@@ -76,7 +78,6 @@ def chatbot(request):
             form.save()
             task = Chats.objects.filter(Username=body["Username"]).values()
             # print(task)
-            # print("-----------------------------------------")
             return redirect("/chatbot")
         except:
             return redirect("/chatbot")
@@ -84,8 +85,8 @@ def chatbot(request):
     task = Chats.objects.filter(Username=request.user).values()
     length=len(Chats.objects.filter(Username=request.user).values())
     # print(task)
-    print("All chats ")
-    print(request)
+    # print("All chats ")
+    # print(request)
     
     return render(request,"chatbot.html",{"mymembers":task,"msg_count":length})
 

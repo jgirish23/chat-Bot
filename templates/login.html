@@ -36,7 +36,7 @@
       {{Error}}
     </div>
     {% else %}
-    <h1>Login</h1>
+    <h1 class="text-center pt-3">Login</h1>
     {% endif %}
 
     <section class="vh-100">
@@ -59,30 +59,28 @@
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form method="POST">
                 <!-- Email input -->
-                <div class="form-outline mb-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
                   <input
                     name="Email"
                     type="email"
-                    id="form3Example3"
-                    class="form-control form-control-lg"
-                    placeholder="Enter Email address"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
                   />
-                  <label class="form-label" for="form3Example3"
-                    >Email address</label
-                  >
                 </div>
 
                 <!-- Password input -->
-                <div class="form-outline mb-3">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
                   <input
                     name="Password"
                     type="password"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter password"
+                    class="form-control"
+                    id="exampleInputPassword1"
                   />
-                  <label class="form-label" for="form3Example4">Password</label>
                 </div>
+
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <button
                     type="submit"
