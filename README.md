@@ -5,7 +5,7 @@
 Clone repo and create a virtual environment
 
 ```
-$ git clone https://github.com/sumrender/sambot
+$ git clone https://github.com/jgirish23/chat-Bot
 $ cd chat-Bot
 $ python3 -m venv venv
 $ source venv/bin/activate
